@@ -278,22 +278,13 @@ var OverviewMap = /** @class */ (function (_super) {
     return OverviewMap;
 }(L.Map));
 function initPage(hasDisplayableData, showIndividualDatasets, routes, regionData, footprintData, defaultZoom, defaultCenter) {
-    var layers = [];
-    var activeLayer = null;
-    if (hasDisplayableData) {
-        var footprint = new DataLayer('footprint', routes.geojsonFootprintURL, new FootprintLayer(footprintData, !regionData), footprintData);
-        if (regionData) {
-            layers.push(new DataLayer('regions', routes.geojsonRegionsURL, new RegionsLayer(regionData, routes), regionData, [footprint]));
-        }
-        else {
-            layers.push(footprint);
-        }
-        activeLayer = layers[0];
-        if (showIndividualDatasets) {
-            layers.push(new DataLayer('datasets', routes.geojsonDatasetsURL, new DatasetsLayer(routes)));
-        }
-    }
-    return new OverviewMap(layers, activeLayer, defaultZoom, defaultCenter);
+  var layers = [];
+  var activeLayer = null;
+  if (hasDisplayableData) {
+      layers.push(new DataLayer('datasets', routes.geojsonDatasetsURL, new DatasetsLayer(routes)));
+      activeLayer = layers[0];
+  }
+  return new OverviewMap(layers, activeLayer, defaultZoom, defaultCenter);
 }
 function getViewToggle(name) {
     var el = document.querySelector('input[name="map_display_view"][value="' + name + '"]');
