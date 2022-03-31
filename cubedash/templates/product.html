@@ -32,7 +32,7 @@
                 </div>
                 <div class="panel odd info-panel">
                     {% if have_displayable_data %}
-                        <div>
+                        <div style="display:none;">
                             {# Show regions if available, otherwise a plain footprint #}
                             {% if product_region_info %}
                                 <label>
@@ -54,6 +54,7 @@
                             <input type="radio"
                                    name="map_display_view"
                                    value="datasets"
+                                   checked="checked"
                                    {% if not show_individual_datasets %}disabled="disabled"{% endif %}
                                    title="Show individual datasets">Datasets</label>
                         </div>
