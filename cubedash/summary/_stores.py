@@ -555,7 +555,7 @@ class SummaryStore:
             select srid_groups.dataset_type_ref,
                    coalesce(srid_groups.region_code, '')                          as region_code,
                    ST_ShiftLongitude(ST_SimplifyPreserveTopology(
-                           ST_Union(ST_Buffer(srid_groups.footprint, 0)), 0.1)) as footprint,
+                           ST_Union(ST_Buffer(srid_groups.footprint, 0)), 0.00001)) as footprint,
                    sum(srid_groups.count)                                         as count
             from srid_groups
             group by srid_groups.dataset_type_ref, srid_groups.region_code
