@@ -31,6 +31,8 @@ ARG ENVIRONMENT=deployment
 RUN echo "Environment is: $ENVIRONMENT"
 
 RUN pip install pip-tools pre-commit pytest-cov
+# download gunicorn
+RUN pip install gunicorn
 
 # Pip installation
 RUN mkdir -p /conf
